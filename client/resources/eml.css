@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans|Roboto');
+
+
+body{
+  font-family: 'Noto Sans', sans-serif;
+  background-color: #90CAF9
+}
+
+h3{
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+.buttons{
+	
+	background-color: transparent; 
+	text-align: center; 
+	margin: 9%; 
+
+}
+
+.buttons .btn{
+	width: 30%; 
+}
+
+h2{
+	font-family: 'Roboto', sans-serif;
+	float: left; 
+}
+
+.meh_header{
+	font-family: 'Roboto', sans-serif;
+	font-size: 30px;
+}
+
+.info_header{
+	font-family: 'Roboto', sans-serif;
+	font-size: 30px;
+}
+
+.fa-cog{
+    display: inline-block;
+    width: 100%;
+}
+
+.fa-cog{
+    text-align: center;
+}
+
+.icon_place{
+	margin-top: 11%; 
+}
