@@ -1,12 +1,11 @@
 #!/usr/bin/env python
-import tensorflow as tf
 from flask import Flask
 from flask_socketio import SocketIO
 from flask_socketio import send, emit
 from os.path import dirname, basename, isfile
 import glob
 import importlib
-import sys  
+import sys
 import matplotlib
 matplotlib.use('Agg')
 import numpy as np
@@ -75,10 +74,6 @@ def error(algorithm, model, X, Y):
 
 app = Flask(__name__)
 socketio = SocketIO(app)
-
-sess = tf.Session()
-a = tf.constant(10)
-b = tf.constant(32)
 
 @socketio.on('connect')
 def connect():
