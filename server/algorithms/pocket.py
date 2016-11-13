@@ -7,8 +7,12 @@ def train(X, Y, iter=DEFAULT_MAX_ITERATIONS, w=-1):
         w = [0] * (len(X[0]) + 1)
     w[0] = 1
 
+    temp = []
     for i in range(0, len(X)):
-        X[i].insert(0, 1)
+        t = [1]
+        t.extend(X[i])
+        temp.append(t)
+    X = temp
 
     bestW = w
     bestErr = error(X, Y, bestW)
@@ -16,7 +20,7 @@ def train(X, Y, iter=DEFAULT_MAX_ITERATIONS, w=-1):
     for it in range(0, iter):
         bad_i = getBadPoint(X, Y, w)
         if bad_i == -1:
-            return (bestW, it)
+            return {"model": bestW, "iterations": iter}
         w = vecAdd(w, vecScale(X[bad_i], Y[bad_i]))
         err = error(X, Y, w)
         if err < bestW:
@@ -66,6 +70,8 @@ def sign(x):
     return 1 if x > 0 else -1
 
 def evaluate(w, x):
+    x = x[:]
+    x.insert(0, 1)
     return sign(vecMultiply(w, x))
 
 def getName():

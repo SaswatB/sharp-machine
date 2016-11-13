@@ -47,10 +47,10 @@ def get2DBounds(data):
 
 def generateImage(algorithm, model, X, Y):
     x1_min, x1_max, x2_min, x2_max = get2DBounds(X)
-    #x1_min -= 1
-    #x1_max += 1
-    #x2_min -= 1
-    #x2_max += 1
+    x1_min -= 1
+    x1_max += 1
+    x2_min -= 1
+    x2_max += 1
     print (x1_min, x1_max, x2_min, x2_max)
     x1 = np.arange(x1_min, x1_max, (x1_max - x1_min)/float(100))
     x2 = np.arange(x2_max, x2_min, -(x2_max - x2_min)/float(100))
@@ -69,8 +69,8 @@ def generateImage(algorithm, model, X, Y):
             data_n1_x1.append(X[i][0])
             data_n1_x2.append(X[i][1])
     
-    #plt.scatter(data_1_x1, data_1_x2, color="y")
-    #plt.scatter(data_n1_x1, data_n1_x2, color="g")
+    plt.scatter(data_1_x1, data_1_x2, color="y")
+    plt.scatter(data_n1_x1, data_n1_x2, color="g")
     
     buf = io.BytesIO()
     plt.savefig(buf, format = "png")

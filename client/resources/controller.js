@@ -37,6 +37,8 @@ app.controller('smCtrl', function($scope){
     $scope.algoChoice = -1;
     $scope.trainingData = null;
     $scope.resultImage = "";
+    $scope.resultData = "";
+    $scope.resultError = "";
 
     var socket = io(string = "http://54.196.97.40:8080"); 
     socket.on('connect', function(){
@@ -53,6 +55,8 @@ app.controller('smCtrl', function($scope){
         console.log(data);
         $scope.pageIndex = 3;
         $scope.resultImage = "data:image/png;base64,"+data.image;
+        $scope.resultData = data.result;
+        $scope.resultError = data.error;
         $scope.$apply();
     });
       

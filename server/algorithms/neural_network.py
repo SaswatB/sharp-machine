@@ -64,8 +64,10 @@ def sign(x):
     return 1 if x > 0 else -1
 
 def train(X, Y, layers=DEFAULT_LAYERS, epochs=DEFAULT_EPOCHS, learning_rate=DEFAULT_LEARNING_RATE):
+     temp = []
      for i in range(0, len(X)):
-        X[i] = np.asarray([ 1, 0 ]).reshape(len(X[i]), 1)
+        temp.append(np.asarray([ 1, 0 ]).reshape(len(X[i]), 1))
+     X = temp
      layers.insert(0, len(X[i]))
      arch = make_mlp(*layers)
      return {"model": train_mlp(arch, X, Y)}
