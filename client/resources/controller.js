@@ -47,6 +47,12 @@ app.controller('smCtrl', function($scope){
         $scope.$apply();
         console.log(data);
     }); 
+
+    socket.on('result', function(data) {
+        console.log(data);
+        $scope.pageIndex = 3;
+        $scope.$apply();
+    });
       
     socket.on('disconnect', function(){console.log("disconnected");});  
       
@@ -61,7 +67,8 @@ app.controller('smCtrl', function($scope){
             return;
         }
         socket.emit("train", {"data": $scope.trainingData, "algorithm": $scope.algoChoice});
-        //$scope.pageIndex = 3; Uncomment this later
+        $scope.pageIndex = 2;
     }
     
 }); 
+
