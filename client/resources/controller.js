@@ -31,7 +31,7 @@ function data_parser(callback){
 
 var app = angular.module('sm', []); 
 app.controller('smCtrl', function($scope){
-    $scope.pageIndex = 1;//change this back to 1 later 
+    $scope.pageIndex = 3;//change this back to 1 later 
     $scope.file = null; 
     $scope.algorithms = [{"name": 4}]; 
     $scope.algoChoice = -1;
