@@ -12,9 +12,17 @@ function data_parser(callback){
 			}
 
 			var j;
-			var arr2 = new Array(bigArr.length);
-			for(j=0; j<arr2.length; j++){
-				arr2[j] = bigArr[j].split(',');
+			var arr2 = [];
+			for(j=0; j<bigArr.length; j++){
+        if(bigArr[j].trim().length == 0){
+          break;
+        }
+				var temp = bigArr[j].split(',');
+        var arr3 = new Array(temp.length);
+        for(i=0; i<temp.length; i++){
+          arr3[i] = parseInt(temp[i]);
+        }
+        arr2.push(arr3);
 			}
       callback(arr2); 
       
@@ -26,47 +34,37 @@ var app = angular.module('sm', []);
 app.controller('smCtrl', function($scope){
   $scope.pageIndex = 1; 
   $scope.file = null; 
-  $scope.algorithms = []; 
+  $scope.algorithms = [{"name": 4}]; 
+  $scope.algoChoice = -1;
+  $scope.trainingData = null;
   
-  var socket = io(string = "http://1ee768f2.ngrok.io"); 
+  var socket = io(string = "http://b4f91bee.ngrok.io"); 
   socket.on('connect', function(){
     console.log("connected"); 
   });
   socket.on('init', function(data){
     console.log(data);
     $scope.algorithms = data; 
+    $scope.$apply();
+    console.log(data);
+
   }); 
   
   socket.on('disconnect', function(){console.log("disconnected");});  
   
   $scope.fileChanged = function(){
     data_parser(function(data){
-      socket.emit("data", data);
+      $scope.trainingData = data;
     }); 
      
   }; 
-  
-  
-  
-  
-  
-}); 
-
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
+$scope.train = function(){
+  if(!$scope.trainingData || $scope.algoChoice==1){
+    alert("Please enter all fields before continuing");
+    return;
   }
+  socket.emit("train", {"data": $scope.trainingData, "algorithm": $scope.algoChoice});
+  $scope.pageIndex = 2; 
 }
+    
+}); 

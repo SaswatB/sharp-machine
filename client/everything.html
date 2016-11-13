@@ -37,36 +37,14 @@
 	
 	
 	<div class = "input_field" ng-show='pageIndex == 1'> 
-		<input type="file" name="myFile" id="myFile" class="inputfile" ng-model="file" onchange="angular.element(this).scope().fileChanged()" /> <!-- potential source of error if Samad didn't copy it right --> 
+		<input type="file" name="myFile" id="myFile" class="inputfile" ng-model="file" onchange="angular.element(this).scope().fileChanged()" />
 		<label for="myFile">Choose a file...</label>
-		<!-- <input type="file" id="myFile" onchange="myFunction1()"> -->
+		<select ng-model="algoChoice">
+			<option ng-repeat="Object in algorithms" ng-value="Object.name"> {{Object.name}} </option>
+
+		</select>
+		<button ng-click="train()">Train</button> 
 	</div>
-	
-	<!-- <div class="dropdown">
-		<button onclick="myFunction()" class="dropbtn">Dropdown</button>
-		<div id="myDropdown" class="dropdown-content">
-			<a href="#">Link 1</a>
-			<a href="#">Link 2</a>
-			<a href="#">Link 3</a>
-		</div>
-	</div> -->
-	<div  id="algorithmMenu">
-		<div class = "container"> 
-			<div class = "dropdown"> 
-				<button class = "btn btn-primary dropdown-toggle" type = "button" data-toggle = "dropdown"> 
-					Choose your algorithm <span class="caret"></span>
-				</button>
-				
-				<ul class = "dropdown-menu">
-					<li id="algorithmItem"><a href="">TestItem</a></li>
-					<li id="algorithmItem"><a href="">TestItem</a></li>
-					<li id="algorithmItem"><a href="">TestItem</a></li>
-				</ul>
-			</div> 
-		
-		</div> 
-	</div>
-	
 	
 	<div class = "icon_place" ng-show='pageIndex == 2'> 
 	  <i class="fa fa-cog fa-spin fa-5x" aria-hidden="true"></i>
