@@ -6,19 +6,12 @@ while Saswat Bhattacharya and Toshi Piazza will work on the machine learning bac
 
 The purpose of this web application is for a user to easily apply and develop machine learning algorithms and observe its behavior.
 
-Algorithms:
--Linear Perceptron with Pocket
--Neural Networking
--Linear Regression
+Algorithms: Linear Perceptron with Pocket, Neural Networking, Linear Regression
 
 USER INPUT: .csv numerical data
 Allow a few seconds for the machine to learn from the input.
 
-Results:
--Picture
--Model
--Error
-------------------------------------------------------------------------------------------------------------------------------------
+Results: Picture, Model, Error
 
 How to install
 Dependencies:
