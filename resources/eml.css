@@ -33,10 +33,20 @@ h2{
 	font-size: 30px;
 }
 
-header .jumbotron{
-	
+.info_header{
+	font-family: 'Roboto', sans-serif;
+	font-size: 30px;
 }
 
-footer .jumbotron{
-	
+.fa-cog{
+    display: inline-block;
+    width: 100%;
+}
+
+.fa-cog{
+    text-align: center;
+}
+
+.icon_place{
+	margin-top: 11%; 
 }
