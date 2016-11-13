@@ -47,11 +47,15 @@ def get2DBounds(data):
 
 def generateImage(algorithm, model, X, Y):
     x1_min, x1_max, x2_min, x2_max = get2DBounds(X)
-    print get2DBounds(X)
-    x1 = np.arange(x1_min, x1_max, (x1_max - x1_min)/400)
-    x2 = np.arange(x2_max, x2_min, -(x2_max - x2_min)/400)
+    #x1_min -= 1
+    #x1_max += 1
+    #x2_min -= 1
+    #x2_max += 1
+    print (x1_min, x1_max, x2_min, x2_max)
+    x1 = np.arange(x1_min, x1_max, (x1_max - x1_min)/float(100))
+    x2 = np.arange(x2_max, x2_min, -(x2_max - x2_min)/float(100))
     grid = [[algorithm.evaluate(model, [x1_, x2_]) for x1_ in x1] for x2_ in x2]
-    plt.imshow(grid, extent=(0, 4, 0, 4), interpolation='none', cmap="Spectral")
+    plt.imshow(grid, extent=(x1_min, x1_max, x2_min, x2_max), interpolation='none', cmap="Spectral")
     
     data_1_x1 = []
     data_1_x2 = []
@@ -65,8 +69,8 @@ def generateImage(algorithm, model, X, Y):
             data_n1_x1.append(X[i][0])
             data_n1_x2.append(X[i][1])
     
-    plt.scatter(data_1_x1, data_1_x2)
-    plt.scatter(data_n1_x1, data_n1_x2)
+    #plt.scatter(data_1_x1, data_1_x2, color="y")
+    #plt.scatter(data_n1_x1, data_n1_x2, color="g")
     
     buf = io.BytesIO()
     plt.savefig(buf, format = "png")
@@ -110,6 +114,7 @@ def handle_message(data_json):
     print result
     print dir(algorithm)
     emit("result", {"result": str(result), "image": generateImage(algorithm, result["model"], X, Y), "error": error(algorithm, result["model"], X, Y)})
+    print "results sent"
 
 @app.route("/")
 def hello():

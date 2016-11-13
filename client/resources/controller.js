@@ -31,12 +31,13 @@ function data_parser(callback){
 
 var app = angular.module('sm', []); 
 app.controller('smCtrl', function($scope){
-    $scope.pageIndex = 3;//change this back to 1 later 
+    $scope.pageIndex = 1; 
     $scope.file = null; 
     $scope.algorithms = [{"name": 4}]; 
     $scope.algoChoice = -1;
     $scope.trainingData = null;
-    
+    $scope.resultImage = "";
+
     var socket = io(string = "http://54.196.97.40:8080"); 
     socket.on('connect', function(){
         console.log("connected"); 
@@ -51,6 +52,7 @@ app.controller('smCtrl', function($scope){
     socket.on('result', function(data) {
         console.log(data);
         $scope.pageIndex = 3;
+        $scope.resultImage = "data:image/png;base64,"+data.image;
         $scope.$apply();
     });
       
