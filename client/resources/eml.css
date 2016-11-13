@@ -10,6 +10,11 @@ h3{
   font-family: 'Roboto', sans-serif;
   text-align: center;
 }
+h3:onhover{
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  
+}
 
 .buttons{
 	
