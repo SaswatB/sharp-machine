@@ -134,3 +134,11 @@ h2{
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+
+
+#algorithmMenu{
+	text-align: center; 
+	margin: 0.7%;
+	padding-right: 12.5%; 
+}
