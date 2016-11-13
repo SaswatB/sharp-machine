@@ -26,3 +26,7 @@ sudo apt-get install python2.7 python-minimal python-pip
 sudo pip install --upgrade pip
 
 sudo pip install flask flask_socketio matplotlib eventlet
+
+How to Run
+-------------------------------------------------------------------------------------------------------------------------------
+Serve the static data within the client folder using a web server, then run the python server within the server folder.
