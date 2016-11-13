@@ -39,6 +39,8 @@ app.controller('smCtrl', function($scope){
     $scope.resultImage = "";
     $scope.resultData = "";
     $scope.resultError = "";
+    $scope.optionalArgs = [];
+    $scope.optionalValues = {};
 
     var socket = io(string = "http://54.196.97.40:8080"); 
     socket.on('connect', function(){
@@ -67,6 +69,16 @@ app.controller('smCtrl', function($scope){
             $scope.trainingData = data;
         }); 
     }; 
+    $scope.aChoiceChanged = function() {
+        for(var i = 0; i < $scope.algorithms.length; i++) {
+            if($scope.algorithms[i].name == $scope.algoChoice) {
+                $scope.optionalArgs = $scope.algorithms[i]["optional_parameters"];
+                $scope.optionalValues = {};
+                break;
+            }
+        }
+    };
+
     $scope.train = function(){
         if(!$scope.trainingData || $scope.algoChoice==1){
             alert("Please enter all fields before continuing");

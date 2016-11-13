@@ -1,13 +1,13 @@
 import numpy as np
 from numpy import tanh
 
-DEFAULT_EPOCHS = 100000
+DEFAULT_EPOCHS = 1000
 DEFAULT_LAYERS = []
 DEFAULT_LEARNING_RATE = 0.1
 
 def make_mlp(*dimensions):
     def mlp((acc, i), y):
-        return [np.random.rand(y+1, i)] + acc, y
+        return [np.random.randn(y+1, i)] + acc, y
     return reduce(mlp, dimensions[::-1], ([], 1))[0]
 
 
@@ -64,6 +64,7 @@ def sign(x):
     return 1 if x > 0 else -1
 
 def train(X, Y, layers=DEFAULT_LAYERS, epochs=DEFAULT_EPOCHS, learning_rate=DEFAULT_LEARNING_RATE):
+     print X, Y
      temp = []
      for i in range(0, len(X)):
         temp.append(np.asarray([ 1, 0 ]).reshape(len(X[i]), 1))

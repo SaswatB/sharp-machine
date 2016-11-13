@@ -1,11 +1,12 @@
 from random import shuffle
 
-DEFAULT_MAX_ITERATIONS = 1000
+DEFAULT_MAX_ITERATIONS = 100000
 
 def train(X, Y, iter=DEFAULT_MAX_ITERATIONS, w=-1):
     if w == -1:
         w = [0] * (len(X[0]) + 1)
     w[0] = 1
+    iter = int(iter)
 
     temp = []
     for i in range(0, len(X)):

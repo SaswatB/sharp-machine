@@ -51,39 +51,6 @@ h2{
 	margin-top: 11%; 
 }
 
-#myFile{
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
-}
-
-#myFile + label {
-    font-size: 1.25em;
-    font-weight: 700;
-    color: white;
-    display: inline-block;
-}
-
-#myFile:focus + label,
-#myFile + label:hover {
-	text-decoration: underline; 
-}
-
-.inputfile + label {
-	cursor: pointer; 
-}
-
-.input_field{
-	margin-left: 46%;
-	margin-top: 11%; 
-	border: solid 2px #eee; 
-	margin-right: 46%;
-}
-
-
 /* Thank you w3 schools*/
 /* Dropdown Button */
 .dropbtn {
@@ -146,4 +113,11 @@ h2{
 	text-align: center; 
 	margin: 0.7%;
 	padding-right: 12.5%; 
+}
+
+.entry-form {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    border: 5px gray solid;
 }

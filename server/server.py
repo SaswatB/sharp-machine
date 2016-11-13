@@ -55,7 +55,7 @@ def generateImage(algorithm, model, X, Y):
     x1 = np.arange(x1_min, x1_max, (x1_max - x1_min)/float(100))
     x2 = np.arange(x2_max, x2_min, -(x2_max - x2_min)/float(100))
     grid = [[algorithm.evaluate(model, [x1_, x2_]) for x1_ in x1] for x2_ in x2]
-    plt.imshow(grid, extent=(x1_min, x1_max, x2_min, x2_max), interpolation='none', cmap="Spectral")
+    plt.imshow(grid, extent=(x1_min, x1_max, x2_min, x2_max), interpolation='none', cmap='seismic')
     
     data_1_x1 = []
     data_1_x2 = []
@@ -78,10 +78,20 @@ def generateImage(algorithm, model, X, Y):
     return base64.b64encode(buf.getvalue()).decode()
 
 def error(algorithm, model, X, Y):
+#    error = 0
+#    for i in range(0, len(X)):
+#        error += (algorithm.evaluate(model, X[i]) - Y[i])**2
+#    return error/len(X)
     error = 0
-    for i in range(0, len(X)):
-        error += (algorithm.evaluate(model, X[i]) - Y[i])**2
-    return error/len(X)
+    for i in range(len(X)):
+        error += 0 if sign(algorithm.evaluate(model, X[i])) == Y[i] else 1
+    return float(error)/len(X)
+
+def sign(val):
+    if val > 0:
+       return 1
+    else:
+       return -1
 
 app = Flask(__name__)
 socketio = SocketIO(app)
