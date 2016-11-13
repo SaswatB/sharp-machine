@@ -37,7 +37,7 @@ app.controller('smCtrl', function($scope){
     $scope.algoChoice = -1;
     $scope.trainingData = null;
     
-    var socket = io(string = "http://52.90.78.215:5000"); 
+    var socket = io(string = "http://54.196.97.40:8080"); 
     socket.on('connect', function(){
         console.log("connected"); 
     });
