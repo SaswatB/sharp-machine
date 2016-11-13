@@ -37,7 +37,7 @@ app.controller('smCtrl', function($scope){
     $scope.algoChoice = -1;
     $scope.trainingData = null;
     
-    var socket = io(string = "http://b4f91bee.ngrok.io"); 
+    var socket = io(string = "http://70f511dd.ngrok.io"); 
     socket.on('connect', function(){
         console.log("connected"); 
     });
