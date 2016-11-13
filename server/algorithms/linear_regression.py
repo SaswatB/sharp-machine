@@ -1,9 +1,12 @@
 import numpy as np
 
 def train(X, Y):
+    temp = []
     for i in range(0, len(X)):
-        X[i].insert(0, 1)
-    X = np.matrix(X)
+        t = [1]
+        t.extend(X[i])
+        temp.append(t)
+    X = np.matrix(temp)
     Y = np.transpose(np.matrix([Y]))
 
     w = np.matmul(
@@ -26,6 +29,8 @@ def sign(x):
     return 1 if x > 0 else -1
 
 def evaluate(w, x):
+    x = x[:]
+    x.insert(0, 1)
     return sign(vecMultiply(w, x))
 
 def getName():
