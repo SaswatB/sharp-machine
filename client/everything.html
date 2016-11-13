@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en">
   <head>
    <meta charset="utf-8">
-	<title>Results!</title>
+	<title>Welcome to TSM!</title>
 	<meta name="description" content="Hello World">
 	<!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -12,28 +12,58 @@
 	
 	<link href = "resources/eml.css" rel = "stylesheet"  type = "text/css"/>
 	
+	<link rel="stylesheet" href="resources/css/font-awesome.min.css">
+	
 	<link rel="icon" href="resources/favicon.jpg"/>
 	
 	<script src="resources/angular.min.js"></script>
+		
+	<script type = "text/javascript" src = "resources/controller.js"></script>
 	
+	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
   </head>
-  <body> 
+  <body ng-app = "sm" ng-controller="smCtrl"> 
 		
 	<!-- Good header for the landing page.--> 
 	<header> 
 	  <div class = "jumbotron"> 
 	    <div class = "container"> 
-		  <h3>Results!</h3> 
+		  <h3 ng-show='pageIndex == 1'>Upload a file!</h3> 
+		  <h3 ng-show='pageIndex == 2'>Please wait...</h3>
+		  <h3 ng-show='pageIndex == 3'>Results!</h3>
 		</div> 
 	  </div> 
 	</header> 
 	
-	<div class = "information"> 
+	
+	<div class = "input_field" ng-show='pageIndex == 1'> 
+		<input type="file" name="myFile" id="myFile" class="inputfile" ng-model="file" onchange="angular.element(this).scope().fileChanged()" /> <!-- potential source of error if Samad didn't copy it right --> 
+		<label for="myFile">Choose a file...</label>
+		<!-- <input type="file" id="myFile" onchange="myFunction1()"> -->
+	</div>
+	
+	<div class="dropdown">
+		<button onclick="myFunction()" class="dropbtn">Dropdown</button>
+		<div id="myDropdown" class="dropdown-content">
+			<a href="#">Link 1</a>
+			<a href="#">Link 2</a>
+			<a href="#">Link 3</a>
+		</div>
+	</div>
+	
+	
+	<div class = "icon_place" ng-show='pageIndex == 2'> 
+	  <i class="fa fa-cog fa-spin fa-5x" aria-hidden="true"></i>
+	</div> 
+	
+	<div class = "information" ng-show='pageIndex == 3'> 
 		<p class = "info_header"><u>Information</u></p>
 		<ul id = "stats"></ul><!-- put list items here from a js func or angular func -->
 	</div> 
 	
 	
+	
+	<!-- Good footer for the landing page.--> 
 	<footer> 
 	<div class = "footer navbar-fixed-bottom"> 
 	  <div class = "jumbotron" style = "margin-bottom: 0px;"> 
@@ -46,5 +76,5 @@
 	  <!-- Latest compiled and minified JavaScript -->
       <script type="text/javascript" src="resources/jquery-3.1.1.min.js"></script>
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  </body> 
-</html> 
+    </body> 
+  </html> 
