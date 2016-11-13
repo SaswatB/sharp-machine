@@ -5,12 +5,15 @@
 </head>
 <body>
 	<h1 align="center"> Upload File </h1>
-	<input type="file" id="myFile" onchange="myFunction()">
-	
+	<input type="file" id="myFile" onchange="myFunction1()">
+	<p>
+		<input type="text" style="width:350px;height:300px;font-size: 14;" id="function"/>
+		<input type="button" value="Run"/>
+	</p>
 
 	<script type="text/javascript">
 
-	function myFunction(){
+	function myFunction1(){
 		var x = document.getElementById("myFile");
 		var f = new FileReader();
 		var s;
@@ -18,7 +21,7 @@
 			console.log(f.result);
 			s = f.result;
 			var bigArr = s.split('\n');
-			for (i=0; i < n; i++){
+			for (i=0; i < bigArr.length; i++){
 				console.log(bigArr[i]);
 			}
 
@@ -40,6 +43,14 @@
 		};
 		f.readAsBinaryString(x.files[0]);
 	}
+/*	I got a start on the mapping function but realized I can't turn a string into a straight up function
+	function mapping(arr){
+		s = document.getElementById("function");
+		var newArr = arr.map(function(){
+
+		})
+	}
+*/
 	</script>
 </body>
 <html>
