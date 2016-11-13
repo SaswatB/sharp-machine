@@ -31,13 +31,13 @@ function data_parser(callback){
 
 var app = angular.module('sm', []); 
 app.controller('smCtrl', function($scope){
-    $scope.pageIndex = 3;//change this back to 1 later 
+    $scope.pageIndex = 1;//change this back to 1 later 
     $scope.file = null; 
     $scope.algorithms = [{"name": 4}]; 
     $scope.algoChoice = -1;
     $scope.trainingData = null;
     
-    var socket = io(string = "http://52.90.78.215:5000"); 
+    var socket = io(string = "http://54.196.97.40:8080"); 
     socket.on('connect', function(){
         console.log("connected"); 
     });
