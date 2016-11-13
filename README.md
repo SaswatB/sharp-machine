@@ -13,10 +13,16 @@ Allow a few seconds for the machine to learn from the input.
 
 Results: Picture, Model, Error
 
-How to install
+How to Install
+-------------------------------------------------------------------------------------------------------------------------------
 Dependencies:
+
 sudo add-apt-repository ppa:fkrull/deadsnakes
+
 sudo apt-get update
+
 sudo apt-get install python2.7 python-minimal python-pip
+
 sudo pip install --upgrade pip
+
 sudo pip install flask flask_socketio matplotlib eventlet
