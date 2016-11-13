@@ -31,13 +31,13 @@ function data_parser(callback){
 
 var app = angular.module('sm', []); 
 app.controller('smCtrl', function($scope){
-    $scope.pageIndex = 1; 
+    $scope.pageIndex = 3;//change this back to 1 later 
     $scope.file = null; 
     $scope.algorithms = [{"name": 4}]; 
     $scope.algoChoice = -1;
     $scope.trainingData = null;
     
-    var socket = io(string = "http://b4f91bee.ngrok.io"); 
+    var socket = io(string = "http://52.90.78.215:5000"); 
     socket.on('connect', function(){
         console.log("connected"); 
     });
@@ -61,7 +61,7 @@ app.controller('smCtrl', function($scope){
             return;
         }
         socket.emit("train", {"data": $scope.trainingData, "algorithm": $scope.algoChoice});
-        $scope.pageIndex = 2; 
+        //$scope.pageIndex = 3; Uncomment this later
     }
     
 }); 
